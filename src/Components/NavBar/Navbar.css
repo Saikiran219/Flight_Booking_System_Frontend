@@ -1,0 +1,45 @@
+.custom-navbar {
+    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    color: white; /* Text color for navbar */
+    
+}
+ 
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-left: 25px;
+}
+ 
+.nav-link {
+    color: white !important; /* Force link color */
+    font-weight: 500;
+}
+ 
+.nav-link:hover {
+    color: #ffd700 !important; /* Gold color on hover */
+    transition: color 0.3s ease;
+}
+ 
+.nav-item {
+    margin: 0 10px; /* Add spacing between nav items */
+}
+ 
+.navbar-toggler {
+    border: none; /* Remove default border */
+}
+ 
+.navbar-toggler-icon {
+    background-color: white; /* Change toggle icon color */
+}
+ 
+.nav-link.active {
+    border-bottom: 2px solid #ffd700; /* Active link style */
+}
+ 
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center; /* Center nav items on smaller screens */
+    }
+}
+
+ 

@@ -1,0 +1,32 @@
+/* Container for the Contact page */
+.container {
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background with opacity */
+    color: #fff; /* White text color */
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for the container */
+}
+
+/* Heading styles */
+.display-4 {
+    color: #fff; /* White text color for headings */
+}
+
+/* Paragraph text */
+.lead, p {
+    color: #ddd; /* Lighter gray text color for paragraphs */
+}
+
+/* Contact details */
+.text-center {
+    color: #fff; /* White text color for contact details */
+}
+
+/* Link styles */
+a {
+    color: #007bff; /* Primary color for links */
+}
+
+a:hover {
+    color: #0056b3; /* Darker shade on hover */
+}

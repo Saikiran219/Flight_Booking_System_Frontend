@@ -1,0 +1,114 @@
+* EditFlightPage.css */
+ 
+body {
+    background-color: #121212; /* Darker background for better contrast */
+    color: #e0e0e0; /* Light text for readability */
+    font-family: Arial, sans-serif;
+    padding: 20px; /* Added padding to increase overall size */
+  }
+   
+  .edit-flight-page {
+    max-width: 900px; /* Increased max width for a more spacious layout */
+    margin: 30px auto; /* Increased margin for more space above and below */
+    padding: 30px; /* Increased padding for more inner space */
+    background-color: #1e1e1e; /* Softer dark background */
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.7); /* Slightly more pronounced shadow */
+  }
+   
+  .edit-flight-title {
+    font-size: 26px; /* Increased font size */
+    margin-bottom: 25px; /* Increased margin for more space */
+    text-align: center;
+    color: #ffb300; /* Warmer yellow */
+  }
+   
+  .section-title {
+    font-size: 22px; /* Increased font size */
+    margin-top: 25px; /* Increased margin */
+    margin-bottom: 15px; /* Increased margin */
+    color: #007bff; /* Primary blue */
+    font-weight: bold; /* Increased font weight */
+  }
+   
+  .flight-number {
+    font-size: 20px; /* Increased font size */
+    margin-bottom: 25px; /* Increased margin */
+    color: #007bff; /* Primary blue */
+    font-weight: bold; /* Increased font weight */
+  }
+   
+  .form-label {
+    display: block;
+    margin: 12px 0 6px; /* Adjusted margins for better spacing */
+    color: #ffffff; /* White for clarity */
+  }
+ 
+  .title{
+    display: block;
+    margin: 12px 0 6px; /* Adjusted margins for better spacing */
+    color: #ffffff; /* White for clarity */
+  }
+   
+  .form-input,
+  .form-select {
+    width: 100%;
+    padding: 12px; /* Increased padding for larger input fields */
+    margin-bottom: 12px; /* Increased margin */
+    border: 1px solid #444; /* Darker border for subtlety */
+    border-radius: 4px;
+    background-color: #282828; /* Darker input background */
+    color: #e0e0e0; /* Light text */
+  }
+   
+  .form-input:focus,
+  .form-select:focus {
+    border-color: #ffcc00; /* Bright yellow for focus state */
+    outline: none;
+  }
+   
+  .error-message {
+    color: #ff5555; /* Slightly muted red for error messages */
+    font-size: 15px; /* Increased font size */
+    margin-top: -8px;
+    margin-bottom: 12px; /* Increased margin */
+  }
+   
+  .seat-detail,
+  .stop-detail {
+    border: 1px solid #444; /* Consistent border */
+    border-radius: 4px;
+    padding: 20px; /* Increased padding for better spacing */
+    margin-bottom: 20px; /* Increased margin */
+    background-color: #333333; /* Slightly lighter dark */
+  }
+   
+  .action-button {
+    background-color: #4caf50; /* Bright green */
+    color: #1a1a1a; /* Dark text for contrast */
+    padding: 12px 18px; /* Increased padding for larger buttons */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 15px; /* Increased margin */
+    transition: background-color 0.3s;
+  }
+   
+  .action-button:hover {
+    background-color: #e0b800; /* Muted yellow on hover */
+  }
+   
+  .cancel-button {
+    background-color: #d9534f; /* Soft red for cancel */
+  }
+   
+  .cancel-button:hover {
+    background-color: #c9302c; /* Darker red on hover */
+  }
+ 
+  .flight-details {
+    background-color: #333333; /* Slightly lighter dark */
+  }
+  .tire{
+    padding: 10px;
+  }

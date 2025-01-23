@@ -1,0 +1,97 @@
+
+ 
+/* EmailSender.css */
+ 
+.recovery-container {
+  max-width: 400px;
+  margin: 350px auto;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.5);
+}
+ 
+  .recovery-form {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  h2 {
+    text-align: center;
+    color:white;
+    margin-bottom: 20px;
+  }
+ 
+  .message {
+    color: #28a745; /* Green for success messages */
+    text-align: center;
+  }
+ 
+  .error {
+    color: #dc3545; /* Red for error messages */
+    text-align: center;
+  }
+ 
+  .form-group {
+    margin-bottom: 15px;
+  }
+ 
+  label {
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+  }
+ 
+  input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+  }
+ 
+  input[type="email"]:focus {
+    border-color: #007bff; /* Focus color */
+    outline: none;
+  }
+ 
+  .btn {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+ 
+  .btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+ 
+  .recovery-container {
+    position: relative; /* Ensure the button is positioned relative to this container */
+    padding: 20px; /* Add some padding */
+}
+ 
+.close-button-a {
+    position: absolute; /* Position it absolutely within the container */
+    top: 10px; /* Adjust the top distance */
+    right: 10px; /* Adjust the right distance */
+    background-color: white; /* Set the background color to red */
+    color: silver; /* Change text color to white for contrast */
+    border: none; /* Remove border */
+    font-size: 20px; /* Adjust font size */
+    cursor: pointer; /* Change cursor on hover */
+    padding: 5px 10px; /* Add some padding for better appearance */
+    border-radius: 5px; /* Optional: add some rounded corners */
+}
+ 
+h2 {
+    margin-top: 40px; /* Add space below the button */
+}
+ 
+ 
+ 

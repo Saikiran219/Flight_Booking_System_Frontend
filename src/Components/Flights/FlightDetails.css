@@ -1,0 +1,35 @@
+/* FlightDetails.css */
+.flight-details {
+    background-color: #f8f9fa; /* Light background color */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+ 
+.flight-header {
+    color: #007bff; /* Header color */
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+ 
+.flight-info {
+    color: black; /* Dark text color for details */
+    font-size: 16px;
+    margin: 10px 0;
+}
+ 
+.flight-stop {
+    color: #6c757d; /* Grey text color for stops */
+}
+ 
+.flight-seat {
+    background-color: rgba(0, 0, 0, 0.774); /* Light grey for seat details */
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0;
+}
+.no-stops-message {
+    color: #888; /* Gray color */
+    font-style: italic;
+}

@@ -1,0 +1,55 @@
+.login-container {
+    position: relative;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+ 
+.login-content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    z-index: 1;
+}
+ 
+.btn-wide {
+    width: 100%; /* Increase the width of the login button */
+}
+ 
+.text{
+    margin-top: 10px;
+}
+.register-link {
+    color: white; /* Set the text color to red */
+    text-align: center; /* Center text */
+    display: block; /* Make the link a block element */
+     /* Add margin to create space */
+}
+ 
+.text {
+    text-align: center; /* Center the text */
+    margin: 15px 0; /* Add vertical spacing */
+}
+.login-content h2 {
+    color: #fff; /* Bright white color */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Subtle shadow for depth */
+    font-size: 2rem; /* Increase font size */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 20px; /* Add space below the heading */
+}
+.register-link,
+.forgot-password-link {
+    color: white; /* Default color */
+    transition: color 0.3s ease; /* Smooth transition */
+}
+ 
+.register-link:hover,
+.forgot-password-link:hover {
+    color: yellow; /* Color on hover */
+}

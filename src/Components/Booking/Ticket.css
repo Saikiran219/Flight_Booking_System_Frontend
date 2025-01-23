@@ -1,0 +1,45 @@
+/* TicketPage.css */
+ 
+/* Container background is transparent with padding to avoid cramped content */
+.my-ticket {
+    background-color: transparent; /* Transparent background */
+    padding: 50px;
+    border-radius: 10px;
+}
+ 
+/* Transparent card with a subtle border and shadow to stand out */
+.ticket {
+    background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Light black border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    backdrop-filter: blur(10px); /* Adds a blur effect for a modern look */
+    border-radius: 15px;
+    padding: 20px; /* Add padding for internal spacing */
+}
+ 
+/* Ensure text remains dark or white depending on context */
+.custom-ticket-css {
+    color: black; /* Dark text for readability */
+    margin: 10px 0; /* Space between lines */
+    font-size: 16px; /* Increase font size for better readability */
+}
+ 
+.custom-ticket-css p {
+    margin-bottom: 8px; /* Space between paragraphs */
+    margin-right: 20px;
+}
+ 
+/* Increase font size for specific headings */
+.custom-ticket-css.h4 {
+    font-size: 24px; /* Larger size for h4 */
+    font-weight: bold; /* Make it bold */
+}
+ 
+.custom-ticket-css.h5 {
+    font-size: 20px; /* Larger size for h5 */
+    font-weight: bold; /* Make it bold */
+}
+.stop-detailSS {
+    color: white;
+    padding: 5px;
+}

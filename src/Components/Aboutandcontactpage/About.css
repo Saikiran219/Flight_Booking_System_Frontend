@@ -1,0 +1,18 @@
+/* Container for the About page */
+.container {
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background with opacity */
+    color: #fff; /* White text color */
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for the container */
+}
+
+/* Heading styles */
+.display-4 {
+    color: #fff; /* White text color for headings */
+}
+
+/* Paragraph text */
+.lead, p {
+    color: #ddd; /* Lighter gray text color for paragraphs */
+}

@@ -1,0 +1,122 @@
+/* Container for the flight list */
+.flight-list-container {
+    background-color: #1a1a1a; /* Dark background */
+    color: #f5f5f5; /* Light text color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+ 
+.flight-list-title {
+    color: rgba(255, 255, 255, 0.9); /* Dark white color for better visibility */
+    margin-top: 60px; /* Adjust margin to create space from the top */
+    margin-bottom: 20px; /* Space below the title */
+    text-align: center; /* Center the title */
+    font-size: 2rem; /* Increase font size for better visibility */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Optional: add shadow for better contrast */
+}
+ 
+/* Table styles */
+.flight-list-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+ 
+.flight-list-table th,
+.flight-list-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #444; /* Dark border */
+}
+ 
+.flight-list-table th {
+    background-color: #333; /* Darker header background */
+}
+ 
+/* Action buttons */
+.flight-action-button {
+    padding: 10px 15px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.flight-action-button:hover {
+    opacity: 0.8;
+}
+.reset-filter-btn{
+    width:400px;
+    height: 50px;
+    padding:15px;
+    background-color:blue;
+    color: #ffffff;
+
+}
+ 
+/* Specific colors for Edit and Delete buttons */
+.flight-action-button.edit {
+    background-color: #5cb85c; /* Green for Edit */
+    color: #ffffff;
+}
+ 
+.flight-action-button.delete {
+    background-color: #d9534f; /* Red for Delete */
+    color: #ffffff;
+}
+ 
+/* Tag styles for seat prices */
+.seat-price {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 0.9em;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+ 
+.seat-price:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+ 
+.dropdown {
+    position: absolute; /* Ensures dropdown appears above table */
+    background-color: #1e1e1e; /* Match your UI theme */
+    border: 1px solid #444;
+    z-index: 1;
+    margin-top: 5px; /* Add some spacing below the header */
+    max-height: 150px; /* Limit height */
+    overflow-y: auto; /* Allow scrolling if many options */
+    width: 200px; /* Set a fixed width */
+}
+ 
+ 
+.filter-container {
+    display: flex;
+    align-items: center; /* Align items vertically center */
+    margin-bottom: 20px; /* Space below the filter */
+}
+ 
+.filter-icon {
+    background: none; /* Remove default button styles */
+    border: none; /* No border */
+    font-size: 24px; /* Adjust size of the filter icon */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-right: 10px; /* Space between icon and dropdowns */
+}
+ 
+.dropdowns {
+    display: flex; /* Align dropdowns in a row */
+    gap: 10px; /* Space between dropdowns */
+}
+ 
+.form-select {
+    padding: 5px;
+    border-radius: 5px; /* Rounded corners for dropdowns */
+    border: 1px solid #ccc; /* Border style */
+    background-color: #fff; /* Background color */
+}
+ 

@@ -1,0 +1,97 @@
+.profile-container {
+    padding: 20px;
+    background-color: transparent; /* Dark background for contrast */
+    color: #ffffff; 
+    /* Light text color */
+    margin-top: 30px;
+}
+ 
+.profile-content {
+    border: 1px solid #495057; /* Darker border */
+    border-radius: 8px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3); /* Darker content background */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    width: 80%; /* Set width to 80% for some space from edges */
+    max-width: 1400px; /* Set a max width for larger screens */
+    margin: 0 auto; /* Center the content */
+}
+ 
+.profile-content h2 {
+    color: white;
+    text-align: center; /* Center the title */
+}
+ 
+.profile-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em; /* Larger title */
+    color: #ffc107; /* Highlight color for title */
+}
+ 
+.profile-details-title {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    text-align: left; /* Align left for headers */
+    color: black; /* Light color for headers */
+}
+ 
+.booking-history-title {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    text-align: left; /* Align left for headers */
+    color: black; /* Light color for headers */
+}
+ 
+.login-prompt {
+    text-align: center;
+    color: black; /* Light gray for less emphasis */
+}
+ 
+/* Table styles */
+.table {
+    background-color: transparent; /* Darker table background */
+    color: #ffffff; /* White text for table */
+    width: 100%; /* Full width of table */
+}
+ 
+.table th, .table td {
+    border-color: #495057; /* Darker border for table cells */
+    padding: 10px;
+}
+ 
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #5a6268; /* Alternating row color */
+}
+ 
+/* Button styling */
+.btn-info {
+    background-color: #007bff; /* Primary button color */
+    border: none;
+}
+ 
+.btn-info:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+ 
+.btn-danger {
+    background-color: #dc3545; /* Danger button color */
+    border: none;
+}
+ 
+.btn-danger:hover {
+    background-color: #c82333; /* Darker shade on hover */
+}
+ 
+.btn-success {
+    background-color: #28a745; /* Success button color */
+    border: none;
+}
+ 
+.btn-success:hover {
+    background-color: #218838; /* Darker shade on hover */
+}
+ 
+.historyy h3{
+    text-align: center;
+}

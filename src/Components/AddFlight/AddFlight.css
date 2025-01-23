@@ -1,0 +1,134 @@
+ 
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+ 
+.add-flight-container {
+    max-width: 950px;
+    margin: auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+ 
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9); /* Dark white color for better visibility */
+    margin-top: 50px; /* Adjust margin to create space from the top */
+    margin-bottom: 20px; /* Space below the title */
+    text-align: center; /* Center the title */
+    font-size: 2rem; /* Increase font size for better visibility */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Optional: add shadow for better contrast */
+}
+ 
+.alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+ 
+.alert.success {
+    background-color: #4caf50;
+    color: #ffffff;
+}
+ 
+.alert.error {
+    background-color: #f44336;
+    color: #ffffff;
+}
+ 
+.flight-form {
+    display: flex;
+    flex-direction: column;
+}
+ 
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+ 
+.form-group {
+    flex: 1;
+    margin-right: 10px;
+}
+ 
+.form-group:last-child {
+    margin-right: 0;
+}
+ 
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+ 
+.form-select, .form-input {
+    width: 100%;
+    padding: 10px;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    border-radius: 5px;
+    color: #ffffff;
+}
+ 
+.form-select:focus, .form-input:focus {
+    outline: none;
+    border-color: #6200ea;
+}
+ 
+.section-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+ 
+.seat-row, .stop-row {
+  
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 25px;
+    background-color: #2c2c2c;
+    border-radius: 5px;
+}
+.stop-row1,.seat-row{
+ display: flex;
+}
+ 
+.add-btn, .remove-btn, .submit-button {
+    background-color: #6200ea;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+ 
+.add-btn:hover, .remove-btn:hover, .submit-button:hover {
+    background-color: #3700b3;
+}
+ 
+.remove-btn {
+    background-color: #f44336;
+    margin-left: 10px;
+}
+ 
+.remove-btn:hover {
+    background-color: #d32f2f;
+}
+.error-message {
+    color: red; /* Color for the error message */
+    font-size: 0.875rem; /* Adjust size as needed */
+    position: absolute; /* Position it absolutely */
+}
+ 
+.seat-row {
+    position: relative; /* Make the seat-row a positioning context */
+}
+ 
+ 
