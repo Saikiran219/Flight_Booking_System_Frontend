@@ -21,41 +21,6 @@ import AddFlight from './Components/AddFlight/Addflight';
 import AllFlights from './Components/GetAllFlights/AllFlights';
 import EditFlight from './Components/UpdateFlight/EditFlight';
 
-
-
-
-// const router=createBrowserRouter([
-//     {path:'/',element:<RootLayout />,children:[
-//         {index:true,element:<HomePage />,},
-//         {path:'/flightlist',element:<FlightList />},
-//         {           
-//             element: <PrivateRoute />,
-//             children:[
-//                {path:'/booking', element:<BookingPage />} ,
-//                {path:'/ticket',element:<TicketPage />},
-//                {path:'/profile',element:<ProfilePage />},
-//                { path: '/addFlights', element: <AddFlight /> },
-//                { path: '/getFlights', element: <AllFlights /> },
-//                {path: '/edit-flight/:flightId/:seatId/:stopId',element:< EditFlight/> },
-
-//             ]   
-                            
-//         },
-//         {path:'/about',element:<About />},
-//         {path:'/contact',element:<Contact />},
-     
-//         {path:'/login',element:<Login />},
-//         {path:'/register',element:<Register />},
-//         { path: '/EmailSender', element: <EmailSender /> },
-//         { path: '/passwordReset', element: <ResetPassword /> }, // Updated
-       
-        
-
-       
-      
-
-//     ]},
-// ])
 const router = createBrowserRouter([
     { path: '/', element: <RootLayout />, children: [   
         { index: true, element: <HomePage />, },
@@ -69,7 +34,7 @@ const router = createBrowserRouter([
             ]
         },
         {
-            element: <PrivateRoute allowedEmails={['spanchagiri684@gmail.com']} />,  // Admin-specific private route
+            element: <PrivateRoute allowedEmails={['rayudusaikiran17@gmail.com']} />,  // Admin-specific private route
             children: [
                 { path: '/addFlights', element: <AddFlight /> },
                 { path: '/getFlights', element: <AllFlights /> },

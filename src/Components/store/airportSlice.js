@@ -29,7 +29,7 @@ const  airportSlice = createSlice({
 export default airportSlice.reducer;
 
  export const getAirports=createAsyncThunk('airports/get',async()=>{
-    const response = await fetch('https://localhost:44339/api/Airports');
+    const response = await fetch('https://localhost:7144/api/Airports');
     const result = await response.json(); 
     return result;
  })

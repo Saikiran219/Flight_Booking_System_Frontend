@@ -250,10 +250,12 @@ export default function BookingPage() {
             setIsSubmitting(true);
             let userId = localStorage.getItem('userId');
             if (userId) {
-                userId = parseInt(userId);
+               
+                console.log('UserId:', userId);
             } else {
                 throw new Error("UserId not found.");
             }
+            
             const bookingDate = new Date().toISOString();
     
             // Modify passenger data to exclude unwanted fields and include seat bookings
@@ -285,7 +287,7 @@ export default function BookingPage() {
             // };
             // dispatch(requiredInfoForBooking);
     
-            const response = await axiosInstance.post('https://localhost:44339/api/Booking/confirm', bookingData);
+            const response = await axiosInstance.post('https://localhost:7144/api/Booking/confirm', bookingData);
             const bookingId = response.data.bookingDetails.bookingId;
             //const totalP = response.data.bookingDetails.totalPrice; 
             const passengerIds = response.data.bookingDetails.passengers.map(p => p.passengerId);

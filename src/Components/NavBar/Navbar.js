@@ -34,7 +34,7 @@ export default function Navbar() {
                         <Link className="nav-link" to="/contact">Contact Us</Link>
                     </li>
                     {/* Conditional rendering for admin buttons */}
-                    {userEmail === 'spanchagiri684@gmail.com' && (
+                    {userEmail === 'rayudusaikiran17@gmail.com' && (
                         <>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/getFlights">Get Flights</Link>

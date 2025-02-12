@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axiosinstance from '../Authnticate/axiosInstance'
 import './AllFlights.css';
  
 const GetAllFlights = () => {
@@ -14,11 +14,12 @@ const GetAllFlights = () => {
     const [selectedAirline, setSelectedAirline] = useState("");
    
     const [showDropdowns, setShowDropdowns] = useState(false); // State to manage dropdown visibility
+    const token = localStorage.getItem('authToken');
  
     const navigate = useNavigate();
  
     useEffect(() => {
-        axios.get('https://localhost:44339/api/Flight/GetAllFlights')
+        axiosinstance.get('Flight/GetAllFlights')
             .then(response => {
                 setFlights(response.data);
                 setFilteredFlights(response.data);
@@ -33,9 +34,9 @@ const GetAllFlights = () => {
     const fetchDropdownData = async () => {
         try {
             const [departureResponse, arrivalResponse, airlineResponse] = await Promise.all([
-                axios.get('https://localhost:44339/api/Airports'),
-                axios.get('https://localhost:44339/api/Airports'),
-                axios.get('https://localhost:44339/api/Airlines')
+                axiosinstance.get('Airports'),
+                axiosinstance.get('https://localhost:7144/api/Airports'),
+                axiosinstance.get('https://localhost:7144/api/Airlines')
             ]);
             setDepartureAirports(departureResponse.data);
             setArrivalAirports(arrivalResponse.data);
@@ -88,7 +89,7 @@ const GetAllFlights = () => {
         if (!confirmDelete) return;
  
         try {
-            await axios.delete(`https://localhost:44339/api/Flight/delete-flight/${flightId}`);
+            await axiosinstance.delete(`https://localhost:7144/api/Flight/delete-flight/${flightId}`);
             setFlights(flights.filter(flight => flight.flightId !== flightId));
             setFilteredFlights(filteredFlights.filter(flight => flight.flightId !== flightId));
             alert("Successfully deleted the Flight");

@@ -26,7 +26,7 @@ const EditFlightPage = () => {
   useEffect(() => {
     const fetchFlightDetails = async () => {
       try {
-        const response = await axios.get(`https://localhost:44339/api/Flight/${flightId}`);
+        const response = await axios.get(`https://localhost:7144/api/Flight/${flightId}`);
         setFlightDetails(response.data);
         setSeatDetails(response.data.seats);
         setOriginalSeatDetails(response.data.seats);
@@ -40,7 +40,7 @@ const EditFlightPage = () => {
  
     const fetchAirports = async () => {
       try {
-        const response = await axios.get('https://localhost:44339/api/Airports');
+        const response = await axios.get('https://localhost:7144/api/Airports');
         setAirports(response.data);
       } catch (error) {
         console.error('Error fetching airports:', error);
@@ -362,7 +362,7 @@ const EditFlightPage = () => {
     };
  
     try {
-      await axios.put(`https://localhost:44339/api/Flight/UpdateFlightDetails`, updatedFlightDetails);
+      await axios.put(`https://localhost:7144/api/Flight/UpdateFlightDetails`, updatedFlightDetails);
       alert('Flight details updated successfully');
       navigate(`/getFlights`);
     } catch (error) {

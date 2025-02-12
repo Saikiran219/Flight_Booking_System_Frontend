@@ -20,7 +20,7 @@ export default function SearchForm({ onSearch }) {
     useEffect(() => {
         const fetchAirports = async () => {
             try {
-                const response = await axios.get('https://localhost:44339/api/Airports');
+                const response = await axios.get('https://localhost:7144/api/Airports');
                 setDepartureAirports(response.data);
                 setArrivalAirports(response.data);
             } catch (error) {
@@ -51,7 +51,7 @@ export default function SearchForm({ onSearch }) {
         });
 
         try {
-            const response = await axios.get('https://localhost:44339/api/Flight/Basicsearch', { params: searchParams });
+            const response = await axios.get('https://localhost:7144/api/Flight/Basicsearch', { params: searchParams });
             const data = response.data;
 
             if (data.length === 0) {

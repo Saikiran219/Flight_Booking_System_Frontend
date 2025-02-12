@@ -28,7 +28,7 @@ const EmailSender = () => {
     }
  
     try {
-      const response = await axios.post('https://localhost:44339/api/UserLogin/send-reset-link',
+      const response = await axios.post('https://localhost:7144/api/UserLogin/send-reset-link',
         email, // Send the email directly as a string
         {
           headers: {

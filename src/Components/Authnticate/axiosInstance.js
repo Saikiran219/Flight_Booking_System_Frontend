@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Create an Axios instance
 const axiosInstance = axios.create({
-    baseURL: 'https://localhost:44339/api/',
+    baseURL: 'https://localhost:7144/api/',
 });
 
 // Request Interceptor to add token to headers

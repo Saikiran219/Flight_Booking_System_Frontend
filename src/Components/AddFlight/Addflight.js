@@ -43,7 +43,7 @@ const AddFlight = () => {
         // Fetch Airports
         const fetchAirports = async () => {
             try {
-                const response = await axios.get('https://localhost:44339/api/Airports');
+                const response = await axios.get('https://localhost:7144/api/Airports');
                 setAirports(response.data);
             } catch (error) {
                 console.error('Error fetching airports:', error);
@@ -55,7 +55,7 @@ const AddFlight = () => {
         // Fetch Airlines
         const fetchAirlines = async () => {
             try {
-                const response = await axios.get('https://localhost:44339/api/Airlines');
+                const response = await axios.get('https://localhost:7144/api/Airlines');
                 setAirlines(response.data);
             } catch (error) {
                 console.error('Error fetching airlines:', error);
@@ -314,7 +314,7 @@ const AddFlight = () => {
         }
        
         try {
-            const response = await axios.post('https://localhost:44339/api/Flight/Add', flightDetails);
+            const response = await axios.post('https://localhost:7144/api/Flight/Add', flightDetails);
             console.log('Flight added successfully:', response.data);
            
             alert('Flight details Added successfully');

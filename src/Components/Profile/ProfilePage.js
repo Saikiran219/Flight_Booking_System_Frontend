@@ -7,6 +7,7 @@ import './ProfilePage.css';
 export default function ProfilePage() {
     const [user, setUser] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
+    const [totalPrice, setTotalPrice] = React.useState(null);
     const [bookingHistory, setBookingHistory] = useState([]);
     const [isHistoryVisible, setIsHistoryVisible] = useState(false); // State for toggling history visibility
  
@@ -29,7 +30,7 @@ export default function ProfilePage() {
             }
  
             try {
-                const response = await axios.get("https://localhost:44339/api/UserLogin/UserByEmail", {
+                const response = await axios.get("https://localhost:7144/api/UserLogin/UserByEmail", {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },
@@ -67,7 +68,7 @@ export default function ProfilePage() {
         }
  
         try {
-            const response = await axios.get(`https://localhost:44339/api/Booking/user/${userId}/bookings`, {
+            const response = await axios.get(`https://localhost:7144/api/Booking/user/${userId}/bookings`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
@@ -77,6 +78,8 @@ export default function ProfilePage() {
                 const updatedBookings = response.data.map(booking => {
                     const currentDate = new Date();
                     const departureDate = new Date(booking.flight.departureTime); // Adjust according to your API response structure
+                     const totalcoast=booking.totalPrice
+                     setTotalPrice(totalcoast);
  
                     // Check the status and update accordingly
                     if (booking.statusId === -1) {
@@ -141,8 +144,7 @@ export default function ProfilePage() {
             seatPosition: seat.seatPosition || 'N/A',
         }));
  
-        const seatPrice = booking.seats[0]?.price || 0;
-        const totalPrice = seatPrice * booking.passengers.length;
+        
  
         navigate('/ticket', {
             state: {
@@ -168,13 +170,15 @@ export default function ProfilePage() {
     const handleDownloadTicket = async (bookingId) => {
         const token = localStorage.getItem('authToken');
         try {
-            const response = await axios.get(`https://localhost:44339/api/Booking/DownloadTicket/${bookingId}`, {
+            const response = await axios.get(`https://localhost:7144/api/Booking/DownloadTicket/${bookingId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
                 responseType: 'blob',
             });
- 
+          
+            const fetchedTotalCost = response.headers['total-cost'];
+           
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
             link.href = url;

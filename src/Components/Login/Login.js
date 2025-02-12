@@ -48,7 +48,7 @@ export default function Login() {
         const userCredentials = { email, password };
  
         try {
-            const response = await axios.post("https://localhost:44339/api/UserLogin/login", userCredentials, {
+            const response = await axios.post("https://localhost:7144/api/UserLogin/Login", userCredentials, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
