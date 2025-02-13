@@ -39,7 +39,7 @@ export default function TicketPage() {
         if (!confirmCancel) return;
         setLoading(true);
         try {
-            await axios.delete(`https://localhost:7144/api/Booking/cancel/${bookingId}`);
+            await axiosInstance.delete(`Booking/cancel/${bookingId}`);
             setCurrentPassengers([]);
             alert("Ticket canceled successfully.");
         } catch (error) {

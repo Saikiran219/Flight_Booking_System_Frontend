@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from '../Authnticate/axiosInstance'
 import { useParams, useNavigate } from 'react-router-dom';
 import './EditFlightPage.css'; // Ensure this CSS file contains the styles
  
@@ -9,14 +9,8 @@ const EditFlightPage = () => {
  
   const [flightDetails, setFlightDetails] = useState(null);
   const [seatDetails, setSeatDetails] = useState([]);
-  const [originalSeatDetails, setOriginalSeatDetails] = useState([]);
   const [stopDetails, setStopDetails] = useState([]);
-  // const [airlines, setAirlines] = useState([]);
-  const [airports, setAirports] = useState([]);
- 
- 
-  const [originalAirline, setOriginalAirline] = useState('');
- 
+  const [airports, setAirports] = useState([]); 
   const [errors, setErrors] = useState({
     flight: {},
     seats: {},
@@ -26,12 +20,10 @@ const EditFlightPage = () => {
   useEffect(() => {
     const fetchFlightDetails = async () => {
       try {
-        const response = await axios.get(`https://localhost:7144/api/Flight/${flightId}`);
+        const response = await axiosInstance.get(`Flight/${flightId}`);
         setFlightDetails(response.data);
         setSeatDetails(response.data.seats);
-        setOriginalSeatDetails(response.data.seats);
         setStopDetails(response.data.stops);
-        setOriginalAirline(response.data.airline);
       } catch (error) {
         console.error('Error fetching flight details:', error);
       }
@@ -40,7 +32,7 @@ const EditFlightPage = () => {
  
     const fetchAirports = async () => {
       try {
-        const response = await axios.get('https://localhost:7144/api/Airports');
+        const response = await axiosInstance.get('Airports');
         setAirports(response.data);
       } catch (error) {
         console.error('Error fetching airports:', error);
@@ -48,7 +40,6 @@ const EditFlightPage = () => {
     };
  
     fetchFlightDetails();
-  //  fetchAirlines();
     fetchAirports();
   }, [flightId]);
  
@@ -254,7 +245,7 @@ const EditFlightPage = () => {
  
   const groupedSeats = seatDetails.reduce((acc, seat) => {
     if (!acc[seat.seatClass]) {
-      acc[seat.seatClass] = { classType: seat.seatClass, price: seat.price };
+      acc[seat.seatClass] = { classType: seat.seatClass, price: seat.price ,};
     }
     return acc;
   }, {});
@@ -332,9 +323,6 @@ const EditFlightPage = () => {
  
   const saveChanges = async (e) => {
     e.preventDefault();
-    // if (!validateInputs()) {
-    //  // alert('Please fix the errors before saving.');
-    //   return;
     const isValid = validateInputs();
     if (!isValid) {
         return; 
@@ -351,6 +339,7 @@ const EditFlightPage = () => {
         arrivalTime: flightDetails.arrivalTime,
       },
       seats: Object.values(groupedSeats).map(seat => ({
+        SeatId:seat.SeatId,
         classType: seat.classType,
         price: seat.price
       })),
@@ -362,10 +351,11 @@ const EditFlightPage = () => {
     };
  
     try {
-      await axios.put(`https://localhost:7144/api/Flight/UpdateFlightDetails`, updatedFlightDetails);
+      await axiosInstance.put(`Flight/UpdateFlightDetails`, updatedFlightDetails);
       alert('Flight details updated successfully');
       navigate(`/getFlights`);
     } catch (error) {
+      alert('Error updating flight details');
       console.error('Error updating flight details:', error);
     }
   };
@@ -380,14 +370,11 @@ const EditFlightPage = () => {
  
   return (
     <div className="edit-flight-page">
-       {/* <h2 className="edit-flight-title">Edit Flight #{flightId}</h2>  */}
        <form onSubmit={saveChanges} >
       <div className="flight-details">
         <h3 className="section-title">Flight Details</h3>
         <h3 className="flight-number">Flight Number: {flightDetails.flightNumber}</h3>
         
-        
-       
         <label className="form-label" class="title">Departure Airport:</label>
         <select className="form-select" name="departureAirport" value={flightDetails.departureAirport} onChange={handleFlightChange} required>
           <option value="">Select an airport</option>
@@ -474,7 +461,6 @@ const EditFlightPage = () => {
     </div>
   ))}
 </div>
- 
  
       <button className="action-button" type="submit" >Save Changes</button>
       <button className="action-button cancel-button" onClick={cancelEdit}>Cancel</button>

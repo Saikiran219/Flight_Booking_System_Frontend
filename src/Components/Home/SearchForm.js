@@ -37,11 +37,7 @@ export default function SearchForm({ onSearch }) {
             setErrorMessage('Please fill in all required fields.');
             return;
         }
-
-      
-
         const formattedDate = formatDate(departureDate);
-
         const searchParams = new URLSearchParams({
             DepartureAirportName: selectedDeparture,
             ArrivalAirportName: selectedArrival,

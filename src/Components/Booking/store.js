@@ -1,5 +1,4 @@
 import { createStore } from 'redux';
-import { Provider } from 'react-redux';
 
 // Reducer to manage booking data
 const initialState = {

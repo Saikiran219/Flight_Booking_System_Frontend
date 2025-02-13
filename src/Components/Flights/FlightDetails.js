@@ -30,7 +30,7 @@ const FlightDetails = ({ flight,selectedClass}) => {
             <p className="flight-info"><strong>Baggage Allowance:</strong> {flight.baggageAllowance} X 2 kg</p>
             <p className="flight-info"><strong>Cabbin baggage:</strong> {selectedClass === 'Economy' ? '1 X 7 kg' :
                 selectedClass === 'Business' ? '2 X 7 kg' :
-                'N/A'} {/* Default or fallback if class type is not recognized */}</p>
+                'N/A'}</p>
             <p className="flight-info"><strong>Meal :</strong> Free Meal</p>
         </div>
     );

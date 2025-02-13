@@ -17,8 +17,6 @@ export default function Login() {
         let isValid = true;
         setEmailError('');
         setPasswordError('');
- 
-        // Email validation
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email) {
             setEmailError('Email is required.');
@@ -27,8 +25,6 @@ export default function Login() {
             setEmailError('Invalid email format.');
             isValid = false;
         }
- 
-        // Password validation
         if (!password) {
             setPasswordError('Password is required.');
             isValid = false;
@@ -36,7 +32,6 @@ export default function Login() {
             setPasswordError('Password must be at least 6 characters long.');
             isValid = false;
         }
- 
         return isValid;
     };
  
@@ -44,7 +39,6 @@ export default function Login() {
         if (!validateFields()) {
             return;
         }
- 
         const userCredentials = { email, password };
  
         try {
@@ -58,15 +52,8 @@ export default function Login() {
                 localStorage.setItem('authToken', response.data.token);
                 localStorage.setItem('userEmail', email);
                 localStorage.setItem('userId', response.data.userId);
- 
-                // Check if the email matches the admin email
-                if (email === 'spanchagiri684@gmail.com') {
-                    localStorage.setItem('isAdmin', 'true'); // Set admin flag
-                    navigate('/'); // Redirect to Home
-                } else {
-                    localStorage.removeItem('isAdmin'); // Ensure admin flag is removed for non-admins
-                    navigate('/'); // Redirect to Home
-                }
+                navigate('/'); // Redirect to Home
+                
             } else {
                 setErrorMessage('Login failed. Please check your credentials or Register by clicking below button');
             }

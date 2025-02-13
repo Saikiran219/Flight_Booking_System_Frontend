@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from '../Authnticate/axiosInstance';
 import { useNavigate } from 'react-router-dom';
-import './AddFlight.css'; // Import custom styles
+import './AddFlight.css'; 
  
 const AddFlight = () => {
     const [airports, setAirports] = useState([]);
@@ -43,7 +43,7 @@ const AddFlight = () => {
         // Fetch Airports
         const fetchAirports = async () => {
             try {
-                const response = await axios.get('https://localhost:7144/api/Airports');
+                const response = await axiosInstance.get('Airports');
                 setAirports(response.data);
             } catch (error) {
                 console.error('Error fetching airports:', error);
@@ -55,7 +55,7 @@ const AddFlight = () => {
         // Fetch Airlines
         const fetchAirlines = async () => {
             try {
-                const response = await axios.get('https://localhost:7144/api/Airlines');
+                const response = await axiosInstance.get('Airlines');
                 setAirlines(response.data);
             } catch (error) {
                 console.error('Error fetching airlines:', error);
@@ -211,23 +211,17 @@ const AddFlight = () => {
         const updatedStops = [...flightDetails.stops];
         updatedStops[index] = { ...updatedStops[index], [name]: value };
         setFlightDetails({ ...flightDetails, stops: updatedStops });
-    
-        // Copy the current stop errors to ensure we preserve other errors
         const updatedErrors = [...errorMessages.stopErrors];
-    
-        // Validate stop airport against departure and arrival airports
         if (name === 'stopAirportName') {
             if (value === flightDetails.departureAirportName || value === flightDetails.arrivalAirportName) {
                 updatedErrors[index] = 'Stop airport cannot be the same as departure or arrival airport';
             } else {
-                // Clear the error if valid and if no other error is present for stop time
                 if (!updatedErrors[index] || updatedErrors[index] !== 'Stop time must be between departure and arrival times') {
                     updatedErrors[index] = ''; 
                 }
             }
         }
     
-        // Validate stop time to ensure it falls between departure and arrival times
         if (name === 'stopTime') {
             const stopTime = new Date(value);
             const departureTime = new Date(flightDetails.departureTime);
@@ -236,7 +230,6 @@ const AddFlight = () => {
             if (stopTime <= departureTime || stopTime >= arrivalTime) {
                 updatedErrors[index] = 'Stop time must be between departure and arrival times';
             } else {
-                // Clear the error if valid and if no other error is present for stop airport
                 if (!updatedErrors[index] || updatedErrors[index] !== 'Stop airport cannot be the same as departure or arrival airport') {
                     updatedErrors[index] = ''; 
                 }
@@ -245,9 +238,7 @@ const AddFlight = () => {
     
         setErrorMessages({ ...errorMessages, stopErrors: updatedErrors });
     };
-    
-    
- 
+     
     const validateFields = () => {
         const errors = {
             airline: '',
@@ -314,7 +305,7 @@ const AddFlight = () => {
         }
        
         try {
-            const response = await axios.post('https://localhost:7144/api/Flight/Add', flightDetails);
+            const response = await axiosInstance.post('Flight/Add', flightDetails);
             console.log('Flight added successfully:', response.data);
            
             alert('Flight details Added successfully');
@@ -323,8 +314,6 @@ const AddFlight = () => {
         } catch (error) {
             console.error('Error adding flight:', error);
             alert('Error adding flight. Please try again later.');
-            // setAlertMessage('Error adding flight. Please try again.');
-            // setAlertType('error');
         }
     };
  

@@ -25,7 +25,7 @@ export default function Register() {
  
     const validateName = (name) => /^[a-zA-Z\s]+$/.test(name);
     const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const validatePassword = (password) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/.test(password);
+    const validatePassword = (password) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(password);
     const validatePhoneNumber = (phoneNumber) => /^\d{10}$/.test(phoneNumber);
     const validateGender = (gender) => ['Male', 'Female', 'Other'].includes(gender);
     const validateAddress = (address) => address.trim() !== '';
@@ -35,7 +35,7 @@ export default function Register() {
         const newFieldErrors = {
             name: !validateName(name) ? 'Name must contain only letters and spaces.' : '',
             email: !validateEmail(email) ? 'Invalid email address.' : '',
-            password: !validatePassword(password) ? 'Password must be at least 6 characters long and include one uppercase letter, one lowercase letter, and one number.' : '',
+            password: !validatePassword(password) ? 'Password must be at least 8 characters long and include one uppercase letter, one lowercase letter, and one number.' : '',
             phoneNumber: !validatePhoneNumber(phoneNumber) ? 'Phone number must contain exactly 10 digits and only numbers' : '',
             gender: !validateGender(gender) ? 'Please select a valid gender.' : '',
             address: !validateAddress(address) ? 'Address is required.' : '',

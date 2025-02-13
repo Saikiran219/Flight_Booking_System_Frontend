@@ -1,17 +1,36 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Navbar.css';
  
 export default function Navbar() {
     const navigate = useNavigate();
     const isLoggedIn = !!localStorage.getItem("authToken");
-    const userEmail = localStorage.getItem("userEmail");
+    const token = localStorage.getItem("authToken");
+
+
+    let userRoles = [];
+    if (isLoggedIn) {
+        try {
+            const decodedToken = jwtDecode(token);
+            userRoles = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || [];
+        } catch (error) {
+            console.error("Token decoding failed", error);
+        }
+    }
+
+    const isAdmin = userRoles.includes('Admin');
+    localStorage.setItem("Role",userRoles);
  
     const handleLogout = () => {
         localStorage.removeItem('authToken');
         localStorage.removeItem('userEmail');
-        navigate('/'); // Redirect to home page after logout
+         localStorage.removeItem('userId')
+         localStorage.removeItem('Role')
+         ;
+      
+        navigate('/'); 
     };
  
     return (
@@ -34,7 +53,7 @@ export default function Navbar() {
                         <Link className="nav-link" to="/contact">Contact Us</Link>
                     </li>
                     {/* Conditional rendering for admin buttons */}
-                    {userEmail === 'rayudusaikiran17@gmail.com' && (
+                    {isAdmin && (
                         <>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/getFlights">Get Flights</Link>

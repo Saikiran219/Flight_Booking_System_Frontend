@@ -21,12 +21,14 @@ import AddFlight from './Components/AddFlight/Addflight';
 import AllFlights from './Components/GetAllFlights/AllFlights';
 import EditFlight from './Components/UpdateFlight/EditFlight';
 
+
+    
 const router = createBrowserRouter([
     { path: '/', element: <RootLayout />, children: [   
         { index: true, element: <HomePage />, },
         { path: '/flightlist', element: <FlightList /> },
         {
-            element: <PrivateRoute />,  // General private route for authenticated users
+            element: <PrivateRoute allowedRoles={['User', 'Admin']}/>,  // General private route for authenticated users
             children: [
                 { path: '/booking', element: <BookingPage /> },
                 { path: '/ticket', element: <TicketPage /> },
@@ -34,7 +36,7 @@ const router = createBrowserRouter([
             ]
         },
         {
-            element: <PrivateRoute allowedEmails={['rayudusaikiran17@gmail.com']} />,  // Admin-specific private route
+            element: <PrivateRoute allowedRoles={['Admin']}/>,  // Admin-specific private route
             children: [
                 { path: '/addFlights', element: <AddFlight /> },
                 { path: '/getFlights', element: <AllFlights /> },
@@ -51,12 +53,13 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+
+
     return (
         <>
        <Provider store={store}>
        <div className="background-container"></div>
             <div className="content">
-                {/* Your page content goes here */}
                 <RouterProvider router={router} />
             </div>
 

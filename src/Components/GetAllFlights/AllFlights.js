@@ -35,8 +35,8 @@ const GetAllFlights = () => {
         try {
             const [departureResponse, arrivalResponse, airlineResponse] = await Promise.all([
                 axiosinstance.get('Airports'),
-                axiosinstance.get('https://localhost:7144/api/Airports'),
-                axiosinstance.get('https://localhost:7144/api/Airlines')
+                axiosinstance.get('Airports'),
+                axiosinstance.get('Airlines')
             ]);
             setDepartureAirports(departureResponse.data);
             setArrivalAirports(arrivalResponse.data);
@@ -89,7 +89,7 @@ const GetAllFlights = () => {
         if (!confirmDelete) return;
  
         try {
-            await axiosinstance.delete(`https://localhost:7144/api/Flight/delete-flight/${flightId}`);
+            await axiosinstance.delete(`Flight/delete-flight/${flightId}`);
             setFlights(flights.filter(flight => flight.flightId !== flightId));
             setFilteredFlights(filteredFlights.filter(flight => flight.flightId !== flightId));
             alert("Successfully deleted the Flight");

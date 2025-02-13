@@ -54,7 +54,10 @@ export default function ProfilePage() {
     const handleLogout = () => {
         localStorage.removeItem('authToken');
         localStorage.removeItem('userEmail');
-        localStorage.removeItem('userId'); // Clear user ID on logout
+        localStorage.removeItem('userId')
+        localStorage.removeItem('Role')
+       ;
+        // Clear user ID on logout
         navigate('/');
     };
  
@@ -176,9 +179,6 @@ export default function ProfilePage() {
                 },
                 responseType: 'blob',
             });
-          
-            const fetchedTotalCost = response.headers['total-cost'];
-           
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
             link.href = url;

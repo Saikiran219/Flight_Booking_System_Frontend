@@ -1,26 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import axiosInstance from '../Authnticate/axiosInstance';
-//import { ToastContainer, toast } from 'react-toastify';
-
-
- 
+import axiosInstance from '../Authnticate/axiosInstance'; 
 export default function BookingPage() {
     const location = useLocation();
     const { flight, passengers } = location.state || {};
     const classType = location.state?.classType || '';
     const navigate = useNavigate();
-  
-   
- 
     const [passengerDetails, setPassengerDetails] = useState({});
     const [totalPrice, setTotalPrice] = useState(0);
-    const [isPaid, setIsPaid] = useState(false);
     const [availableSeats, setAvailableSeats] = useState([]);
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [error, setError] = useState(null);
     const [formErrors, setFormErrors] = useState({});
-    const [isSubmitting, setIsSubmitting] = useState(false); // To disable button after click
+    const [isSubmitting, setIsSubmitting] = useState(false);
   console.log(classType);
 
     const [cardDetails, setCardDetails] = useState({
@@ -29,10 +21,10 @@ export default function BookingPage() {
         cardExpiry: '',
         cvv: '',
     });
-    const [cardErrors, setCardErrors] = useState({}); // Errors for card details
+    const [cardErrors, setCardErrors] = useState({}); 
 
     useEffect(() => {
-        // Fetch available seats based on flightId and classType
+       
         const fetchAvailableSeats = async () => {
             try {
                 const response = await axiosInstance.get(`/Flight/${flight.flightNumber}/available-seats?seatClass=${classType}`);
@@ -49,14 +41,11 @@ export default function BookingPage() {
         }
     }, [flight.flightNumber, classType]);
  
-    // Handle seat selection
     const handleSeatChange = (index, seat) => {
         const updatedSelectedSeats = [...selectedSeats];
         updatedSelectedSeats[index] = seat;
-        setSelectedSeats(updatedSelectedSeats);
-       
+        setSelectedSeats(updatedSelectedSeats);   
         calculateTotalPrice(updatedSelectedSeats);
-        // Clear the seat number error as soon as a valid seat is selected
     if (seat) {
         setFormErrors((prevErrors) => ({
             ...prevErrors,
@@ -83,8 +72,7 @@ export default function BookingPage() {
             setPassengerDetails(initialPassengerDetails);
         }
     }, [passengers]);
- 
-    // Handle input changes for passenger details
+
     const handleInputChange = (index, field, value) => {
         setPassengerDetails((prevState) => ({
             ...prevState,
@@ -93,18 +81,14 @@ export default function BookingPage() {
                 [field]: value,
             },
         }));
-   
-        // Clear the error for the specific field
         setFormErrors((prevErrors) => ({
             ...prevErrors,
-            [`${field}${index}`]: undefined, // Remove the error for this field
+            [`${field}${index}`]: undefined, 
         }));
     };
    
-     // Function to handle card input changes and apply formatting
      const handleCardInputChange = (field, value) => {
         let formattedValue = value;
-
         // Add dashes to card number after every 4 digits
         if (field === 'cardNumber') {
             formattedValue = value.replace(/\D/g, '').replace(/(.{4})/g, '$1-').trim();
@@ -173,64 +157,34 @@ export default function BookingPage() {
 
     const validateCardDetails = () => {
         const errors = {};
-    
-        // Remove dashes before validating the card number
         const cardNumberWithoutDashes = cardDetails.cardNumber.replace(/-/g, '');
-    
-        // Validate card number (must be 16 digits without dashes)
         if (!/^\d{16}$/.test(cardNumberWithoutDashes)) {
             errors.cardNumber = 'Card number must be 16 digits';
         }
-    
-        // Validate card holder name
         if (!cardDetails.cardHolderName) {
             errors.cardHolderName = 'Cardholder name is required';
         }
-    
-        // Validate CVV (3 digits)
         if (!/^\d{3}$/.test(cardDetails.cvv)) {
             errors.cvv = 'CVV must be 3 digits';
         }
-    
-        // Remove slashes from expiry date before validation
         const cardExpiryWithoutSlash = cardDetails.cardExpiry.replace(/\//g, '');
-    
-        // Validate card expiry date (must be 4 digits, MMYY)
         if (!/^\d{4}$/.test(cardExpiryWithoutSlash)) {
             errors.cardExpiry = 'Card expiry date must be in MM/YY format';
         }
-    
         return errors;
     };
     
- 
-   // Calculate the total price
-    // const calculateTotalPrice = () => {
-    //     const pricePerPassenger = flight.price || 100;
-    //     const total = pricePerPassenger * passengers;
-    //     localStorage.setItem('price',total);
-    //     setTotalPrice(total);
-    // };
-  
-    // Calculate the total price based on selected seat prices
     const calculateTotalPrice = (updatedSelectedSeats) => {
         if (updatedSelectedSeats.length === 0) {
             setTotalPrice(0);
             return;
         }
-    
-        // Sum the prices of the selected seats, ignoring undefined seats
         const total = updatedSelectedSeats.reduce((acc, seat) => {
             return acc + (seat ? seat.price || 0 : 0);  // Check if seat is defined and has a price
-        }, 0);
-    
-        // Store the total price in localStorage and update state
-        localStorage.setItem('price', total);
+        }, 0);   
         setTotalPrice(total);
     };
-   // console.log("toal price",totalPrice);
- 
-    // Handle booking confirmation
+
     const handleBookingConfirmation = async (e) => {
         e.preventDefault();
     
@@ -242,9 +196,6 @@ export default function BookingPage() {
             setCardErrors(cardErrors);
             return;
         }
-
-        // After successful validation of card details, set isPaid to true
-        setIsPaid(true);
     
         try {
             setIsSubmitting(true);
@@ -257,8 +208,6 @@ export default function BookingPage() {
             }
             
             const bookingDate = new Date().toISOString();
-    
-            // Modify passenger data to exclude unwanted fields and include seat bookings
             const passengerData = Object.values(passengerDetails);
             const seatBookings = selectedSeats.map(seat => ({
                 seatId:seat.seatId,
@@ -277,22 +226,9 @@ export default function BookingPage() {
                 bookingDate: bookingDate,
             };
     
-            // let requiredInfoForBooking = {
-            //     type: "SET_BOOKING_DATA",
-            //     payLoad: {
-            //         seatPosition: passengerData[0].seatBookings.seatPosition,
-            //         seatNumber: passengerData[0].seatBookings.seatNumber,
-            //         totalPrice: totalPrice
-            //     }
-            // };
-            // dispatch(requiredInfoForBooking);
-    
             const response = await axiosInstance.post('https://localhost:7144/api/Booking/confirm', bookingData);
             const bookingId = response.data.bookingDetails.bookingId;
-            //const totalP = response.data.bookingDetails.totalPrice; 
             const passengerIds = response.data.bookingDetails.passengers.map(p => p.passengerId);
-            //console.log('total price',totalP);
-            //setTotalPrice(totalPrice);
             alert('Booking confirmed successfully!');
     
             navigate('/ticket', { state: { flight, passengers: passengerData,  seatBookings,totalPrice, bookingId, passengerIds } });
@@ -428,12 +364,7 @@ export default function BookingPage() {
         }
         return forms;
     };
- 
-    // Show the total price when all forms are completed
-    // useEffect(() => {
-    //     calculateTotalPrice();
-    // }, [passengers]);
- 
+
     return (
         <div className="container mt-4 ">
             <h2>Booking Page</h2>

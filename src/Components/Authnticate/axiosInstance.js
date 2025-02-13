@@ -22,8 +22,7 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
     response => response,
     async error => {
-        if (error.response.status === 401) { // Unauthorized
-            // Handle token refresh logic here (e.g., redirect to login, show message)
+        if (error.response.status === 401) { 
             localStorage.removeItem('authToken');
             localStorage.removeItem('tokenExpiry');
             window.location.href = '/login'; // Redirect to login
